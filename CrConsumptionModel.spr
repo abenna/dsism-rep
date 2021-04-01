@@ -1,0 +1,2123 @@
+<?xml version="1.0"?>
+<project  type="tpn">
+     <attributesList  name="Petri Net">
+       <attribute  name="label" type="string"  value="graph"  visible="false"  system="true"  expression="false"/>
+       <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+       <attribute  name="parameters" type="string"  value=""  visible="false"  system="true" allowedTypes="int"/>
+     </attributesList>
+     <attributesList  name="Place">
+       <attribute  name="Id" type="string"  value="0"  visible="false"  system="true"  expression="false"/>
+       <attribute  name="label" type="string"  value="node"  visible="true"  system="true"  expression="false"/>
+       <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+       <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+       <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+       <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+       <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+       <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+       <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+     </attributesList>
+     <attributesList  name="Transition">
+       <attribute  name="Id" type="string"  value=""  visible="false"  system="true"  expression="false"/>
+       <attribute  name="label" type="string"  value="node"  visible="true"  system="true"  expression="false"/>
+       <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+       <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+       <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+       <attribute  name="color" type="color"  value="-65536"  visible="false"  system="true"  expression="false"/>
+       <attribute  name="border" type="color"  value="-65536"  visible="false"  system="true"  expression="false"/>
+       <attribute  name="time" type="string"  value="[0,inf["  visible="true"  system="true"  expression="true"/>
+       <attribute  name="gard" type="bool"  value="true"  visible="true"  system="true"  expression="true"/>
+       <attribute  name="update" type="string"  value=""  visible="true"  system="true"  expression="true"/>
+     </attributesList>
+     <attributesList  name="Arc">
+       <attribute  name="Id" type="string"  value="0"  visible="false"  system="true"  expression="false"/>
+       <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+       <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+       <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+       <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+     </attributesList>
+     <system>
+       int m=2; int consumers=2;
+int resCap=20;
+int jobNeeds=10; int suspNeed=15;
+int min=0; int max=15; int extraTime=25; 
+int minConsTime=5; int maxConsTime=10; int dispTime=11;
+int sresCap=20; int sjobNeeds=10; int sDjobNeeds=15;
+int idfR1=1; int idfR2=2; int idfR3=2;
+int nextR1=2; int nextR2=1; int nextR3=1;
+int typR1=1; int typR2=0; int typR3=0; 
+int parR1=2; int parR2=0; int parR3=0; 
+int current=1;
+int concR=0;
+process controller=cr(m);
+process pr1=l_pr(idfR1, nextR1, typR1, parR1, resCap,jobNeeds);
+process pr2=lr_pr(idfR2, nextR2, typR2, parR2, min, max, minConsTime, maxConsTime, extraTime);
+process pr3=sr_pr(idfR3,nextR3, typR3, parR3, consumers, sresCap, sjobNeeds);
+     </system>
+     <tpn  name="l_pr">
+       <attributesList  name="defaultList">
+         <attribute  name="label" type="string"  value="l_pr"  visible="false"  system="true"  expression="false"/>
+         <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+         <attribute  name="directed" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+         <attribute  name="parameters" type="string"  value="int idfl, int nextl, int typl, int parl, int resCap, int jobNeeds"  visible="false"  system="true" allowedTypes="int"/>
+         <attribute  name="s" type="int"  value="0.0"  visible="false"  system="false"  expression="false"/>
+         <attribute  name="d" type="bool"  value="false"  visible="false"  system="false"  expression="false"/>
+       </attributesList>
+       <verticesList >
+         <place  x="180"  y="220">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="prepared"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="240"  y="220">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="2"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consApproval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-10066177"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-10066177"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="true"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="320"  y="220">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="3"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consumed"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="440"  y="220">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="4"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consUpdate"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-10066177"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-10066177"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="(resCap&gt;=jobNeeds) &amp;&amp; !d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="resCap=resCap-jobNeeds;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="520"  y="220">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="5"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="done"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="520"  y="300">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="6"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consCompletion"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-10066177"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-10066177"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="!d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="180"  y="300">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="7"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="withdrawn"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="520"  y="100">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="24"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="completion"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="d=false;resCap=resCap-suspNeed;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="400"  y="160">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="26"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="resumption"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="s=0;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="240"  y="160">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="27"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="conditionalResumption"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="!d &amp;&amp; (resCap&gt;=jobNeeds) "  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="s=0;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="440"  y="180">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="25"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consUpateS"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="320"  y="160">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="23"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="suspension"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="!d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="d=true;s=1;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="180"  y="340">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="22"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="success!"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16737793"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="true"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="current=nextl;concR=concR-1;m=parl;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="580"  y="220">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="18"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="success!"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-10053121"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="(prepared==0 &amp;&amp;!d)"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="current=nextl;concR=concR-1;m=parl;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="180"  y="260">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="16"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consRejection"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-10066177"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-10066177"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="resCap&lt;jobNeeds"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="100"  y="220">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="17"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="launch?"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-65485"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="(prepared==0) &amp;&amp; (idfl==current &amp;&amp;((typl==1 &amp;&amp; concR==0) || (typl==0)))"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="concR=concR+1;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="320"  y="100">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="28"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="suspended"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+       </verticesList>
+       <linksList >
+         <link  sorce="1" target="2" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="2" target="3" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="2"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="1" target="16" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="20"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="16" target="7" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="22"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="17" target="1" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="23"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="5" target="18" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="24"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="7" target="22" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="26"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="3" target="23" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="27"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="5" target="24" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="28"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="3" target="25" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="29"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="3" target="4" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="3"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="25" target="5" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="30"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="26" target="3" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="31"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="27" target="3" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="32"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="23" target="28" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="33"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="28" target="27" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="34"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="28" target="26" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="35"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="24" target="28" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="36"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="4" target="5" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="4"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="5" target="6" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="5"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="6" target="7" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="6"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+       </linksList>
+     </tpn>
+     <tpn  name="cr">
+       <attributesList  name="defaultList">
+         <attribute  name="label" type="string"  value="cr"  visible="false"  system="true"  expression="false"/>
+         <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+         <attribute  name="directed" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+         <attribute  name="parameters" type="string"  value="int m; "  visible="false"  system="true" allowedTypes="int"/>
+       </attributesList>
+       <verticesList >
+         <place  x="340"  y="80">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="controller"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-10027162"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-13408768"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="m"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="m" type="int"  value="0.0"  visible="false"  system="false"  expression="false"/>
+           </attributesList>
+         </place>
+         <transition  x="280"  y="140">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="2"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="launch!"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-65485"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="true"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+             <attribute  name="m" type="int"  value="0.0"  visible="false"  system="false"  expression="false"/>
+           </attributesList>
+         </transition>
+         <transition  x="400"  y="140">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="3"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="success?"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-6684775"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="true"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+       </verticesList>
+       <linksList >
+         <link  sorce="1" target="2" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-65485"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="3" target="1" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="3"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-13395712"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+       </linksList>
+     </tpn>
+     <tpn  name="ul_pr">
+       <attributesList  name="defaultList">
+         <attribute  name="label" type="string"  value="ul_pr"  visible="false"  system="true"  expression="false"/>
+         <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+         <attribute  name="directed" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+         <attribute  name="parameters" type="string"  value=""  visible="false"  system="true" allowedTypes="int"/>
+         <attribute  name="s" type="int"  value="0.0"  visible="false"  system="false"  expression="false"/>
+         <attribute  name="d" type="bool"  value="false"  visible="false"  system="false"  expression="false"/>
+       </attributesList>
+       <verticesList >
+         <place  x="100"  y="160">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="prepared"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="160"  y="160">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="2"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consApproval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-10066177"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16750900"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="true"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="d=false;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="240"  y="160">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="3"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consumed"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="60"  y="160">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="12"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="launch?"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-65485"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="prepared==0&amp;&amp; pred==0"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="160"  y="80">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="10"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="suspension"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="!d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="d=true;s=1;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="320"  y="80">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="11"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="resumption"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="s=0;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="240"  y="80">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="8"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="suspended"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="320"  y="160">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="6"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="noLongerUseful"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16750900"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-10066177"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="!d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="360"  y="160">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="7"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="withdrawn"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="420"  y="160">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="13"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="success!"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-6710785"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="true"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+       </verticesList>
+       <linksList >
+         <link  sorce="1" target="2" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="2" target="3" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="2"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="3" target="6" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="23"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="3" target="10" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="26"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="10" target="8" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="27"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="12" target="1" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="31"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="7" target="13" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="32"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="8" target="11" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="35"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="11" target="3" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="36"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="6" target="7" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="6"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+       </linksList>
+     </tpn>
+     <tpn  name="lr_pr">
+       <attributesList  name="defaultList">
+         <attribute  name="label" type="string"  value="lr_pr"  visible="false"  system="true"  expression="false"/>
+         <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+         <attribute  name="directed" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+         <attribute  name="parameters" type="string"  value="int idflr, int nextlr, int typlr, int parlr, int min, int max, int minConsTime, int maxConsTime, int extraTime; int dispTime;"  visible="false"  system="true" allowedTypes="int"/>
+         <attribute  name="s" type="int"  value="0.0"  visible="false"  system="false"  expression="false"/>
+         <attribute  name="d" type="bool"  value="false"  visible="false"  system="false"  expression="false"/>
+       </attributesList>
+       <verticesList >
+         <place  x="140"  y="260">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="prepared"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="140"  y="180">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="2"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consApproval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-10066177"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16763956"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[min,minConsTime]"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="min&lt;=max &amp;&amp; minConsTime&gt;min"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="min=min+1;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="240"  y="180">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="3"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consumed"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="320"  y="180">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="4"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consUpdate"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-10066177"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16763956"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[minConsTime,maxConsTime]"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="(minConsTime&gt;=min &amp;&amp; maxConsTime&lt;=max) &amp;&amp; !d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="min=min +(maxConsTime-minConsTime); prepared=0;consumed=0;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="380"  y="180">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="5"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="done"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="460"  y="220">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="6"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consCompletion"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-10066177"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16763956"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[maxConsTime,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value=" !d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="min=min+1;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="520"  y="220">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="7"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="withdrawn"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="380"  y="260">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="8"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="renewableApproval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-10066177"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16763956"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[min,max["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="max&lt;extraTime&amp;&amp; !d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="max=extraTime;minConsTime=min+1;maxConsTime=extraTime;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="240"  y="60">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="9"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="suspended"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="180"  y="120">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="10"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="conditionalResumption"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="!d &amp;&amp; (maxConsTime&lt;=max) &amp;&amp; (minConsTime&gt;=min)"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="s=0;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="240"  y="120">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="11"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="suspension"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="!d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="d=true;s=1;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="300"  y="120">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="12"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="resumption"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="s=0;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="380"  y="60">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="13"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="completion"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="d=false;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="320"  y="140">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="14"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consUpdateS"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="min=min+dispTime;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="40"  y="260">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="15"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="launch?"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-65536"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="(prepared==0) &amp;&amp; (idflr==current &amp;&amp;((typlr==1 &amp;&amp; parlr==0) || (typlr==0)))"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="concR=concR+1;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="460"  y="120">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="16"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="success!"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-10066177"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="prepared==0"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="current=nextlr;concR=concR-1;m=parlr;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="560"  y="220">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="17"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="success!"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-10066177"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="prepared==0"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="current=nextlr;concR=concR-1;m=parlr;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+       </verticesList>
+       <linksList >
+         <link  sorce="1" target="2" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="8" target="1" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="12"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="5" target="8" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="14"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="5" target="13" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="15"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="13" target="9" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="16"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="3" target="11" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="17"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="11" target="9" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="18"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="9" target="10" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="19"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="2" target="3" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="2"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="10" target="3" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="20"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="12" target="3" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="22"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="9" target="12" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="24"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="14" target="5" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="26"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="3" target="14" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="27"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="15" target="1" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="28"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="5" target="16" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="29"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="3" target="4" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="3"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="7" target="17" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="32"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="4" target="5" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="4"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="5" target="6" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="5"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="6" target="7" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="6"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+       </linksList>
+     </tpn>
+     <tpn  name="sr_pr">
+       <attributesList  name="defaultList">
+         <attribute  name="label" type="string"  value="sr_pr"  visible="false"  system="true"  expression="false"/>
+         <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+         <attribute  name="directed" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+         <attribute  name="parameters" type="string"  value="int idfs, int nexts, int typs, int pars, int consumers, int sresCap, int sjobNeeds;"  visible="false"  system="true" allowedTypes="int"/>
+         <attribute  name="d" type="bool"  value="false"  visible="false"  system="false"  expression="false"/>
+         <attribute  name="s" type="int"  value="2.0"  visible="false"  system="false"  expression="false"/>
+       </attributesList>
+       <verticesList >
+         <place  x="100"  y="240">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="prepared"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="160"  y="240">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="2"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consApproval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-10053121"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16764007"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="consumers&gt;1 "  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="240"  y="240">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="3"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consumed"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <place  x="420"  y="240">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="8"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="done"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <place  x="460"  y="300">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="7"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="withdrawn"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="240"  y="180">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="12"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="suspension"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="consumers&gt;0 &amp;&amp;!d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="d=true;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="300"  y="180">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="13"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="resumption"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="s=0;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="360"  y="200">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="15"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consUpdateS"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="420"  y="120">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="14"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="completion"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="d &amp;&amp; (suspended==0)"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="d=false;sresCap=sresCap-sDjobNeeds;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="240"  y="120">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="10"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="suspended"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="340"  y="240">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="9"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consUpdate"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-13408513"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16764007"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="(sresCap&gt;=sjobNeeds) &amp;&amp; (consumers&gt;0 &amp;&amp; !d)"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="sresCap=sresCap-sjobNeeds;consumers=consumers-1;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="420"  y="300">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="6"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consCompletion"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-10053121"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16764007"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="(consumers==0 &amp;&amp; withdrawn==0) &amp;&amp; !d"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="consumed=0;done=0;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="180"  y="180">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="11"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="conditionnalResumption"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="!d &amp;&amp; (sresCap&gt;=sjobNeeds)"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="s=0;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="540"  y="300">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="18"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="success!"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-6710785"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="true"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="current=nexts;concR=concR-1;m=pars;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="40"  y="240">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="16"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="launch?"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-65485"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="(prepared==0) &amp;&amp; (idfs==current &amp;&amp;((typs==1 &amp;&amp; pars==0) || (typs==0)))"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="concR=concR+1;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="540"  y="240">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="17"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="success!"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-6710785"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="(prepared==0 &amp;&amp; !d)"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="current=nexts;concR=concR-1;m=pars;consumed=0;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+       </verticesList>
+       <linksList >
+         <link  sorce="1" target="2" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="2" target="3" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="2"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="3" target="9" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="24"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="9" target="8" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="25"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="8" target="6" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="26"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="9" target="3" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="27"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="3" target="12" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="28"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="12" target="10" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="29"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="10" target="13" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="31"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="10" target="11" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="32"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="3" target="15" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="34"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="15" target="8" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="36"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="13" target="3" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="39"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="8" target="14" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="41"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="14" target="10" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="42"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="11" target="3" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="43"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="16" target="1" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="44"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="8" target="17" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="45"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="2.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="7" target="18" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="46"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="2.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="6" target="7" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="6"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+       </linksList>
+     </tpn>
+     <tpn  name="ns_pr">
+       <attributesList  name="defaultList">
+         <attribute  name="label" type="string"  value="ns_pr"  visible="false"  system="true"  expression="false"/>
+         <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+         <attribute  name="directed" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+         <attribute  name="parameters" type="string"  value="int cons;"  visible="false"  system="true" allowedTypes="int"/>
+       </attributesList>
+       <verticesList >
+         <place  x="60"  y="180">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="prepared"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="100"  y="180">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="3"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="lock"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16737793"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16750900"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="cons==1;"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="140"  y="180">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="4"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="locked"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="200"  y="180">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="5"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consApproval"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16737793"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16750900"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="true"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="260"  y="180">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="6"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consumed"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="320"  y="180">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="7"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="unlock"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16737793"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16750900"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="true"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="cons=cons-1; prepared=1;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="360"  y="180">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="8"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="unlocked"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="420"  y="180">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="9"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consUpdate"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16737793"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16750900"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="true"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="500"  y="180">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="10"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="done "  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="560"  y="180">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="11"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="nolongerUseful"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16737793"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16750900"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="(locked==0)&amp;&amp;(consumed==0)&amp;&amp;(unlocked==0)"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value="prepared=0;cons=0;unlocked=0;  locked=0;"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="620"  y="180">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="12"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="withdrawn"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="20"  y="180">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="13"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="launch?"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16750900"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="true"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="660"  y="180">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="14"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="success!"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16750900"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="true"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <place  x="260"  y="40">
+           <attributesList  name="Place">
+             <attribute  name="Id" type="string"  value="15"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="suspension"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="oval"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="internal" type="bool"  value="true"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="0.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </place>
+         <transition  x="260"  y="100">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="16"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="suspension"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="true"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="340"  y="100">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="17"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="resumption"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="true"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="420"  y="100">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="18"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="consUpdateS"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="true"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="180"  y="100">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="22"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="ConditionnelResumption"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="true"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+         <transition  x="500"  y="40">
+           <attributesList  name="Transition">
+             <attribute  name="Id" type="string"  value="21"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="completion"  visible="true"  system="true"  expression="false"/>
+             <attribute  name="shape" type="shape"  value="rectangle"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="height" type="int"  value="5.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="width" type="int"  value="30.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-3355444"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="border" type="color"  value="-16777216"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="time" type="string"  value="[0,inf["  visible="false"  system="true"  expression="true"/>
+             <attribute  name="gard" type="bool"  value="true"  visible="false"  system="true"  expression="true"/>
+             <attribute  name="update" type="string"  value=""  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </transition>
+       </verticesList>
+       <linksList >
+         <link  sorce="1" target="3" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="1"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="11" target="12" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="10"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="13" target="1" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="11"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="12" target="14" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="12"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="6" target="16" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="13"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="16" target="15" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="14"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="15" target="17" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="15"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="17" target="6" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="16"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="6" target="18" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="17"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="3" target="4" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="2"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="18" target="10" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="20"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="10" target="21" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="21"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="21" target="15" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="22"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="15" target="22" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="23"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="22" target="6" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="24"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="4" target="5" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="3"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="5" target="6" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="4"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="6" target="7" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="5"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="7" target="8" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="6"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="8" target="9" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="7"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="9" target="10" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="8"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+         <link  sorce="10" target="11" >
+           <attributesList  name="Arc">
+             <attribute  name="Id" type="string"  value="9"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="label" type="string"  value="arc"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="color" type="color"  value="-16776961"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="stroke" type="int"  value="1.0"  visible="false"  system="true"  expression="false"/>
+             <attribute  name="token" type="int"  value="1.0"  visible="false"  system="true"  expression="true"/>
+           </attributesList>
+         </link>
+       </linksList>
+     </tpn>
+</project>
